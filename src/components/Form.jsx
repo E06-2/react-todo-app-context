@@ -19,8 +19,8 @@ const Form = () => {
           (e) => setTask({ id: uuidv4(), task: e.target.value, done: false }) //Record our entered task
         }
       />
-      <button onClick={handleSubmit}>Add</button>{' '}
       {/* Calls the submit function from the parent(App) */}
+      <button onClick={handleSubmit}>Add</button>{' '}
     </form>
   );
 };

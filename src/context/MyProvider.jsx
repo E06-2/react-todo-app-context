@@ -35,13 +35,16 @@ const MyProvider = (props) => {
   //This effect will run everytime the tasks state changes
   //Set local storage with the tasks array
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    tasks.length === 0 && localStorage.removeItem('tasks'); //If we have no tasks in the tasks array remove this from localStorage
+    tasks.length > 0 && localStorage.setItem('tasks', JSON.stringify(tasks)); //Only add or update localStorage if there are tasks in our tasks array
   }, [tasks]);
 
   //This effect will run everytime the tasksDone state changes
   //Set local storage with the tasksDone array
   useEffect(() => {
-    localStorage.setItem('tasksDone', JSON.stringify(tasksDone));
+    tasksDone.length === 0 && localStorage.removeItem('tasksDone'); //If we have no tasks in the tasks array remove this from localStorage
+    tasksDone.length > 0 &&
+      localStorage.setItem('tasksDone', JSON.stringify(tasksDone));
   }, [tasksDone]);
 
   //Place the entered task into the tasks array and clear the input field. Also refocus the input field
